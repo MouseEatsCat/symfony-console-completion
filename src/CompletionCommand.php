@@ -111,6 +111,10 @@ END
                 $alias = basename($program);
             }
 
+            if (pathinfo($program, PATHINFO_EXTENSION) === 'php') {
+                $program = PHP_BINARY . ' ' . $program;
+            }
+
             $hook = $factory->generateHook(
                 $input->getOption('shell-type') ?: $this->getShellType(),
                 $program,
